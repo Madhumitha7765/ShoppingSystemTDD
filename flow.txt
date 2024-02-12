@@ -1,0 +1,26 @@
+# Define pricing rules
+rule_a = QuantityDiscountPricingRule(3, 130)
+rule_b = QuantityDiscountPricingRule(2, 45)
+
+# Create items with pricing rules
+item_a = Item("A", 50, rule_a)
+item_b = Item("B", 30, rule_b)
+item_c = Item("C", 20)
+item_d = Item("D", 15)
+
+# Update pricing rules
+rule_a.UpdatePricingRules(4,150)
+
+refactor - item shdnt depend on pr
+
+# Create a checkout instance
+checkout = Checkout()
+
+# Scan items
+checkout.scan(item_a, 3)
+checkout.scan(item_b, 2)
+checkout.scan(item_c)
+checkout.scan(item_d)
+
+# Calculate total price
+total_price = checkout.calculate_total(AABA)
